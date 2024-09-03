@@ -1,8 +1,31 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
-  return <div className="text-blue-600">hello</div>;
-}
+import { client } from "@/libs/client";
+import { MicroCMSListResponse } from "microcms-js-sdk";
+import { GetStaticProps, NextPage } from "next";
+import Link from "next/link";
+export type Blog = {
+  title: string;
+  body: string;
+};
+type Props = MicroCMSListResponse<Blog>;
+const Home: NextPage<Props> = (props) => {
+  return (
+    <div>
+      <ul>
+        {props.contents.map((content) => {
+          return (
+            <li key={content.id}>
+              <Link href={`/blog/${content.id}`}>{content.title}</Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await client.getList({ endpoint: "blog" });
+  return {
+    props: data,
+  };
+};
+export default Home;
