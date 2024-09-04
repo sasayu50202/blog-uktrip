@@ -1,32 +1,39 @@
-import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
-import Link from "next/link";
+import {
+  SimpleGrid,
+  Card,
+  Image,
+  Text,
+  Container,
+  AspectRatio,
+} from "@mantine/core";
+import classes from "./ContentList.module.css";
+import dayjs from "dayjs";
 
-export const ContentList = ({ content }) => {
+export function ContentList({ content, publishedAt }) {
+  const contents = content.map((article) => (
+    <Card
+      key={article.title}
+      p="md"
+      radius="md"
+      component="a"
+      href={`/blog/${article.id}`}
+      className={classes.card}
+    >
+      <AspectRatio ratio={1920 / 1080}>
+        <Image src="/IMG_2133.png" alt="" />
+      </AspectRatio>
+      <Text c="dimmed" size="xs" tt="uppercase" fw={700} mt="md">
+        {dayjs(publishedAt).format("YYYY年MM日DD日")}
+      </Text>
+      <Text className={classes.title} mt={5}>
+        {article.title}
+      </Text>
+    </Card>
+  ));
+
   return (
-    <Link href={`/blog/${content.id}`}>
-      <Card shadow="sm" padding="lg" radius="md" withBorder>
-        <Card.Section>
-          <Image
-            src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-8.png"
-            height={160}
-            alt="Norway"
-          />
-        </Card.Section>
-
-        <Group justify="space-between" mt="md" mb="xs">
-          <Text fw={500}> {content.title}</Text>
-          <Badge color="pink">On Sale</Badge>
-        </Group>
-
-        <Text size="sm" c="dimmed">
-          With Fjord Tours you can explore more of the magical fjord landscapes
-          with tours and activities on and around the fjords of Norway
-        </Text>
-
-        <Button color="blue" fullWidth mt="md" radius="md">
-          詳しく見る
-        </Button>
-      </Card>
-    </Link>
+    <Container py="xl">
+      <SimpleGrid cols={{ base: 1, sm: 2 }}>{contents}</SimpleGrid>
+    </Container>
   );
-};
+}

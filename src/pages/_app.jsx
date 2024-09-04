@@ -7,7 +7,7 @@ const theme = createTheme({
 });
 export default function App({ Component, pageProps }) {
   return (
-    <div className="mx-auto max-w-prose">
+    <div className="mx-auto ">
       <header className="py-8 border-b border-gray-400 flex items-center justify-center">
         <Link href="/">
           <h1 className="text-4xl font-bold">ハリーポッターのロケ地を巡る！</h1>

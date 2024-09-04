@@ -1,19 +1,13 @@
-import { ContentList } from "../components/ContentList.jsx";
+import { ContentList } from "../components/ContentList";
 import { client } from "../libs/client";
 
 const Home = ({ contents }) => {
   return (
-    <div>
-      <ul className="mt-4 space-y-4">
-        {contents.map((content) => {
-          return (
-            <li key={content.id}>
-              <ContentList content={content} />
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <ul>
+      <li key={contents.id}>
+        <ContentList content={contents} />
+      </li>
+    </ul>
   );
 };
 export default Home;
