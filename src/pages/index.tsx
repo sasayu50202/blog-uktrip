@@ -10,11 +10,16 @@ type Props = MicroCMSListResponse<Blog>;
 const Home: NextPage<Props> = (props) => {
   return (
     <div>
-      <ul>
+      <ul className="mt-4 space-y-4">
         {props.contents.map((content) => {
           return (
             <li key={content.id}>
-              <Link href={`/blog/${content.id}`}>{content.title}</Link>
+              <Link
+                className="text-blue-800 text-xl underline hover:text-blue-400"
+                href={`/blog/${content.id}`}
+              >
+                {content.title}
+              </Link>
             </li>
           );
         })}

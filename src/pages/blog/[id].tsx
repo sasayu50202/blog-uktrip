@@ -2,13 +2,19 @@ import { client } from "@/libs/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Blog } from "..";
 import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
+import dayjs from "dayjs";
 type Props = Blog & MicroCMSContentId & MicroCMSDate;
 const BlogId: NextPage<Props> = (props) => {
   return (
     <div>
-      <h1>{props.title}</h1>
-      <time>{props.publishedAt}</time>
-      <div dangerouslySetInnerHTML={{ __html: props.body }} />
+      <h1 className="font-bold text-4xl">{props.title}</h1>
+      <time dateTime={props.publishedAt} className="mt-2 block">
+        {dayjs(props.publishedAt).format("YYYY年MM日DD日")}
+      </time>
+      <div
+        className="prose prose-sm mt-8"
+        dangerouslySetInnerHTML={{ __html: props.body }}
+      />
     </div>
   );
 };
