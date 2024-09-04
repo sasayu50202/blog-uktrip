@@ -1,16 +1,14 @@
-import Link from "next/link";
-import { Demo } from "../components/Demo.jsx";
+import { ContentList } from "../components/ContentList.jsx";
 import { client } from "../libs/client";
 
-const Home = (props) => {
+const Home = ({ contents }) => {
   return (
     <div>
       <ul className="mt-4 space-y-4">
-        {props.contents.map((content) => {
+        {contents.map((content) => {
           return (
             <li key={content.id}>
-              <Link href={`/blog/${content.id}`}>{content.title}</Link>
-              <Demo />
+              <ContentList content={content} />
             </li>
           );
         })}
@@ -18,10 +16,12 @@ const Home = (props) => {
     </div>
   );
 };
+export default Home;
+
+// ブログのリスト取得
 export const getStaticProps = async () => {
   const data = await client.getList({ endpoint: "blog" });
   return {
     props: data,
   };
 };
-export default Home;
