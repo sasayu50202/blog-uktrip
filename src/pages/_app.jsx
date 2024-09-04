@@ -8,12 +8,11 @@ const theme = createTheme({
 export default function App({ Component, pageProps }) {
   return (
     <div className="mx-auto max-w-prose">
-      <header className="py-8 border-b border-gray-400">
-        <h1>
-          <Link href="/" className="text-4xl font-bold">
-            ハリーポッターのロケ地を巡る！イギリス旅行記
-          </Link>
-        </h1>
+      <header className="py-8 border-b border-gray-400 flex items-center justify-center">
+        <Link href="/">
+          <h1 className="text-4xl font-bold">ハリーポッターのロケ地を巡る！</h1>
+          <h2 className="text-2xl text-center">〜イギリス旅行記〜</h2>
+        </Link>
       </header>
       <main className="mt-8">
         <MantineProvider theme={theme}>
