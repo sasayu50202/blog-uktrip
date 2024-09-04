@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Demo } from "../components/demo";
+import { Demo } from "../components/Demo.jsx";
 import { client } from "../libs/client";
 
 const Home = (props) => {
