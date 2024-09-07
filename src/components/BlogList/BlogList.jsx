@@ -6,10 +6,10 @@ import {
   Container,
   AspectRatio,
 } from "@mantine/core";
-import classes from "./ContentList.module.css";
+import classes from "./BlogList.module.css";
 import dayjs from "dayjs";
 
-export function ContentList({ content, publishedAt }) {
+export function BlogList({ content, publishedAt }) {
   const contents = content.map((article) => (
     <Card
       key={article.title}

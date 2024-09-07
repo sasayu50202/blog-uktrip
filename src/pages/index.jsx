@@ -1,13 +1,11 @@
-import { ContentList } from "../components/ContentList";
+import { BlogList } from "../components/BlogList/BlogList";
 import { client } from "../libs/client";
 
 const Home = ({ contents }) => {
   return (
-    <ul>
-      <li key={contents.id}>
-        <ContentList content={contents} />
-      </li>
-    </ul>
+    <div className="mx-w-5xl">
+      <BlogList content={contents} />
+    </div>
   );
 };
 export default Home;
