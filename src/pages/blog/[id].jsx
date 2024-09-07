@@ -2,16 +2,13 @@ import { client } from "../../libs/client";
 import dayjs from "dayjs";
 const BlogId = ({ title, publishedAt, body }) => {
   return (
-    <div>
-      <h1 className="font-bold text-4xl">{title}</h1>
+    <article className="prose mx-w-4xl mx-auto px-4">
+      <h1 className="font-bold text-2xl sm:text-4xl">{title}</h1>
       <time dateTime={publishedAt} className="mt-2 block">
         {dayjs(publishedAt).format("YYYY年MM日DD日")}
       </time>
-      <div
-        className="prose prose-sm mt-8"
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
-    </div>
+      <div className="mt-8" dangerouslySetInnerHTML={{ __html: body }} />
+    </article>
   );
 };
 export default BlogId;
