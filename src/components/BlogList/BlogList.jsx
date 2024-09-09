@@ -9,7 +9,7 @@ import {
 import classes from "./BlogList.module.css";
 import dayjs from "dayjs";
 
-export function BlogList({ content, publishedAt }) {
+export function BlogList({ content }) {
   const contents = content.map((article) => (
     <Card
       key={article.title}
@@ -20,10 +20,10 @@ export function BlogList({ content, publishedAt }) {
       className={classes.card}
     >
       <AspectRatio ratio={1920 / 1080}>
-        <Image src="/IMG_2133.png" alt="" />
+        <Image src={article.image.url} alt="" />
       </AspectRatio>
       <Text c="dimmed" size="xs" tt="uppercase" fw={700} mt="md">
-        {dayjs(publishedAt).format("YYYY年MM日DD日")}
+        {dayjs(article.publishedAt).format("YYYY年MM日DD日")}
       </Text>
       <Text className={classes.title} mt={5}>
         {article.title}
